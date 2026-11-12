@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fôlego — Saúde financeira do seu negócio</title>
+<meta name="description" content="Planilha financeira simples para comércios e pequenos negócios. Veja quanto entra, quanto sai, se dá lucro e quantos dias seu caixa aguenta.">
+<meta name="theme-color" content="#06140d">
+<meta property="og:title" content="Fôlego — Saúde financeira do seu negócio">
+<meta property="og:description" content="Tenha clareza sobre o dinheiro do seu negócio em um só lugar.">
+<meta property="og:type" content="website">
+<style>
+:root{--bg:#06140d;--bg2:#0a1f14;--card:#0e2a1c;--line:#17402b;--tx:#eaf5ee;--mut:#9db8a8;--lime:#a6ff3d;--grn:#19c25a;--red:#ff5a5f;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px);height:100%}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+.w{max-width:1080px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+h1,h2,h3{line-height:1.12;margin:0 0 14px;letter-spacing:-.02em}
+h1{font-size:clamp(32px,6.4vw,58px);font-weight:800}
+h2{font-size:clamp(26px,4.6vw,40px);font-weight:800;text-align:center}
+h3{font-size:18px}
+p{margin:0 0 14px;color:var(--mut)}
+em{font-style:normal;color:var(--lime)}
+.sub{text-align:center;max-width:640px;margin:0 auto 40px}
+.btn{display:inline-block;background:linear-gradient(180deg,#c4ff5e,var(--lime) 60%,#7fe020);color:#06140d;font-weight:800;text-decoration:none;padding:17px 30px;border-radius:999px;box-shadow:0 10px 30px rgba(166,255,61,.28);transition:transform .2s,box-shadow .2s;text-align:center}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(166,255,61,.4)}
+.hero{background:radial-gradient(900px 500px at 80% 0,#124a2a55,transparent 70%),var(--bg);padding-top:48px}
+.hero .w{display:grid;gap:40px;align-items:center}
+@media(min-width:900px){.hero .w{grid-template-columns:1.05fr 1fr}}
+.tag{display:inline-block;border:1px solid var(--line);color:var(--lime);padding:6px 14px;border-radius:99px;font-size:13px;font-weight:600;margin-bottom:18px}
+.note{font-size:14px;margin-top:14px}
+.laptop{background:#0b1a12;border:8px solid #1b2a22;border-radius:18px 18px 6px 6px;padding:12px;box-shadow:0 30px 70px rgba(0,0,0,.55),0 0 60px rgba(25,194,90,.12)}
+.laptop+i{display:block;height:10px;background:#1b2a22;border-radius:0 0 14px 14px;margin:0 -4%}
+.scr{background:#f3f6f4;border-radius:8px;padding:12px;display:grid;grid-template-columns:1fr 1.3fr;gap:10px;color:#10301f;font-size:11px}
+.pn{background:#fff;border-radius:8px;padding:10px;box-shadow:0 1px 4px #0001}
+.pn b{display:block;font-size:11px;margin-bottom:6px}
+.saldo{background:#0d6b36;color:#fff}
+.saldo strong{font-size:20px;display:block}
+.bars{display:flex;align-items:flex-end;gap:6px;height:64px}
+.bars span{flex:1;background:var(--grn);border-radius:3px 3px 0 0}
+.bars span:nth-child(even){background:var(--red)}
+.row{display:flex;justify-content:space-between;border-top:1px solid #e2eae5;padding:4px 0}
+.full{grid-column:1/-1}
+.cap{text-align:center;font-size:12px;margin-top:12px}
+.grid{display:grid;gap:16px}
+@media(min-width:700px){.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}}
+.card{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.ic{width:46px;height:46px;border-radius:14px;background:#123b25;display:grid;place-items:center;font-size:22px;margin-bottom:14px}
+.alt{background:var(--bg2)}
+.quote{text-align:center;font-size:clamp(18px,3vw,24px);font-weight:700;max-width:760px;margin:36px auto 0;color:var(--tx)}
+.ben{display:flex;gap:12px;align-items:flex-start}
+.ben b{color:var(--lime);font-size:20px;line-height:1.3}
+.ben span{color:var(--tx)}
+.offer{max-width:520px;margin:0 auto;text-align:center;border:1px solid var(--lime);box-shadow:0 0 60px rgba(166,255,61,.14)}
+.old{text-decoration:line-through;color:var(--mut)}
+.price{font-size:clamp(44px,9vw,64px);font-weight:800;color:var(--lime);line-height:1.1}
+.offer ul{list-style:none;padding:0;margin:20px 0;text-align:left}
+.offer li{padding:6px 0;color:var(--tx)}
+.offer li::before{content:"✓ ";color:var(--lime);font-weight:800}
+.trust{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;font-size:14px;color:var(--mut);margin-top:16px}
+details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:10px;max-width:760px;margin-inline:auto}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";color:var(--lime);font-size:22px;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin:12px 0 0}
+.final{text-align:center;background:radial-gradient(700px 360px at 50% 100%,#14ad5233,transparent),var(--bg)}
+.final p{max-width:620px;margin:0 auto 28px;font-size:18px}
+footer{text-align:center;font-size:13px;padding:28px 20px;color:var(--mut);border-top:1px solid var(--line)}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<div class="w">
+<div class="rv">
+<span class="tag">Saúde financeira do seu negócio</span>
+<h1>Você trabalha, vende, se dedica ao seu negócio… mas sabe exatamente <em>quanto dinheiro está sobrando?</em></h1>
+<p>Tenha o controle da saúde financeira do seu negócio em um só lugar. Organize suas finanças, acompanhe seus resultados e tome decisões com muito mais clareza usando o Fôlego.</p>
+<a class="btn" data-checkout href="#oferta">QUERO TER CONTROLE DO MEU NEGÓCIO</a>
+<p class="note">Simples, prático e pensado para quem empreende.</p>
+</div>
+<div class="rv">
+<div class="laptop"><div class="scr">
+<div class="pn saldo"><b>Saldo atual</b><strong>R$ 3.250,00 ↑</strong></div>
+<div class="pn"><b>Resumo mensal</b><div class="bars"><span style="height:70%"></span><span style="height:45%"></span><span style="height:80%"></span><span style="height:40%"></span><span style="height:65%"></span><span style="height:50%"></span></div></div>
+<div class="pn full"><b>Movimentações</b>
+<div class="row"><span>Supermercado</span><span style="color:#c0262c">Despesa · R$ 250,00</span></div>
+<div class="row"><span>Salário</span><span style="color:#0d6b36">Receita · R$ 2.500,00</span></div>
+<div class="row"><span>Uber</span><span style="color:#c0262c">Despesa · R$ 45,00</span></div></div>
+</div></div><i></i>
+<p class="cap">Imagem ilustrativa com dados de exemplo.</p>
+</div>
+</div>
+</header>
+
+<section class="alt">
+<div class="w">
+<h2 class="rv">Você se identifica com alguma dessas situações?</h2>
+<p class="sub rv">Se marcou uma ou mais, você não está sozinho.</p>
+<div class="grid g3">
+<div class="card rv"><div class="ic">🤷</div><h3>Vende, mas não sabe quanto lucra</h3><p>O caixa mexe todo dia, mas o resultado real continua um mistério.</p></div>
+<div class="card rv"><div class="ic">🔀</div><h3>Mistura despesas pessoais e da empresa</h3><p>Tudo sai do mesmo bolso e fica impossível separar.</p></div>
+<div class="card rv"><div class="ic">🕳️</div><h3>Não sabe para onde vai o dinheiro</h3><p>O dinheiro entra e some, sem você saber onde.</p></div>
+<div class="card rv"><div class="ic">🧾</div><h3>Dificuldade para organizar as contas</h3><p>Papéis, anotações e mensagens espalhados por todo lado.</p></div>
+<div class="card rv"><div class="ic">📆</div><h3>Fim do mês sem resposta</h3><p>Você ganhou ou perdeu dinheiro? Ninguém sabe dizer ao certo.</p></div>
+</div>
+<p class="quote rv">O problema nem sempre é vender pouco. Muitas vezes, é não ter controle sobre o dinheiro que entra e sai.</p>
+</div>
+</section>
+
+<section>
+<div class="w">
+<h2 class="rv">Conheça o Fôlego. <em>O controle financeiro que seu negócio precisava.</em></h2>
+<p class="sub rv">Uma planilha financeira simples, feita para comércios e pequenos negócios. Em vez de adivinhar, você enxerga a situação do caixa de forma clara.</p>
+<div class="grid g2">
+<div class="card rv"><div class="ic">💵</div><h3>Quanto entra e quanto sai</h3><p>Registre receitas e despesas e acompanhe o movimento do seu negócio.</p><p><em>Benefício:</em> chega de depender da memória ou de anotações soltas.</p></div>
+<div class="card rv"><div class="ic">📈</div><h3>Se dá lucro</h3><p>Veja o resultado do negócio com clareza, sem cálculo complicado.</p><p><em>Benefício:</em> saiba se o que você vende está realmente sobrando.</p></div>
+<div class="card rv"><div class="ic">⏳</div><h3>Quantos dias o caixa aguenta</h3><p>Entenda por quanto tempo seu caixa sustenta o negócio.</p><p><em>Benefício:</em> mais segurança para planejar e se antecipar.</p></div>
+<div class="card rv"><div class="ic">📱</div><h3>Use em qualquer dispositivo</h3><p>Acesse no computador, tablet ou celular.</p><p><em>Benefício:</em> controle na palma da mão, onde você estiver.</p></div>
+</div>
+</div>
+</section>
+
+<section class="alt">
+<div class="w">
+<h2 class="rv">Veja como é <em>usar o Fôlego</em></h2>
+<p class="sub rv">Visão geral do saldo, resumo mensal e lista de movimentações, tudo organizado em uma tela.</p>
+<div class="grid g2">
+<div class="card rv"><div class="scr" style="grid-template-columns:1fr"><div class="pn saldo"><b>Saldo atual</b><strong>R$ 3.250,00 ↑</strong></div><div class="pn"><b>Receitas x Despesas</b><div class="bars"><span style="height:80%"></span><span style="height:40%"></span><span style="height:70%"></span><span style="height:35%"></span><span style="height:90%"></span><span style="height:45%"></span></div></div></div><p class="cap">Resumo do mês · exemplo ilustrativo</p></div>
+<div class="card rv"><div class="scr" style="grid-template-columns:1fr"><div class="pn"><b>Movimentações</b><div class="row"><span>10/06 Supermercado</span><span style="color:#c0262c">R$ 250,00</span></div><div class="row"><span>08/06 Salário</span><span style="color:#0d6b36">R$ 2.500,00</span></div><div class="row"><span>05/06 Uber</span><span style="color:#c0262c">R$ 45,00</span></div><div class="row"><span>01/06 Lazer</span><span style="color:#c0262c">R$ 120,00</span></div></div></div><p class="cap">Lista de lançamentos · exemplo ilustrativo</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="w">
+<h2 class="rv">Mais clareza nas finanças. <em>Mais tranquilidade para empreender.</em></h2>
+<p class="sub"></p>
+<div class="grid g3">
+<div class="card ben rv"><b>✓</b><span>Mais organização financeira</span></div>
+<div class="card ben rv"><b>✓</b><span>Melhor acompanhamento das movimentações</span></div>
+<div class="card ben rv"><b>✓</b><span>Mais clareza sobre os resultados</span></div>
+<div class="card ben rv"><b>✓</b><span>Facilidade para visualizar a situação do negócio</span></div>
+<div class="card ben rv"><b>✓</b><span>Mais segurança na hora de tomar decisões</span></div>
+</div>
+</div>
+</section>
+
+<section class="alt">
+<div class="w">
+<h2 class="rv">Para quem é o <em>Fôlego?</em></h2>
+<p class="sub rv">Para quem empreende e quer enxergar o próprio dinheiro.</p>
+<div class="grid g3">
+<div class="card rv"><div class="ic">🧑‍💼</div><h3>MEIs e pequenos empreendedores</h3></div>
+<div class="card rv"><div class="ic">🏪</div><h3>Donos de lojas, padarias, bares e comércios</h3></div>
+<div class="card rv"><div class="ic">🛠️</div><h3>Prestadores de serviços e autônomos</h3></div>
+</div>
+</div>
+</section>
+
+<section id="oferta">
+<div class="w">
+<h2 class="rv">Seu negócio merece mais <em>organização financeira.</em></h2>
+<p class="sub rv">Comece a ver com clareza o que entra, o que sai e o que sobra.</p>
+<div class="card offer rv">
+<h3>Fôlego — Saúde financeira do seu negócio</h3>
+<p>Planilha financeira simples para controlar entradas, saídas, lucro e fôlego de caixa.</p>
+<div class="old">De <span data-price="old"></span></div>
+<div class="price" data-price="promo"></div>
+<ul>
+<li>Controle de receitas e despesas</li>
+<li>Visão do saldo e do resumo mensal</li>
+<li>Use em qualquer dispositivo</li>
+</ul>
+<a class="btn" data-checkout href="#">QUERO ACESSAR O FÔLEGO AGORA</a>
+<div class="trust"><span>🔒 Compra segura</span><span>⚡ Acesso imediato</span><span>📱 Qualquer dispositivo</span></div>
+<p class="note" id="entrega">Após a confirmação do pagamento, o acesso é liberado conforme as instruções do checkout.</p>
+<p class="note" id="garantia" hidden></p>
+</div>
+</div>
+</section>
+
+<section class="alt">
+<div class="w">
+<h2 class="rv">Perguntas <em>frequentes</em></h2>
+<p class="sub"></p>
+<details><summary>O que é o Fôlego?</summary><p>É uma planilha financeira simples para comércios e pequenos negócios. Com ela você vê quanto entra, quanto sai, se há lucro e quantos dias seu caixa aguenta.</p></details>
+<details><summary>Para quem o aplicativo foi desenvolvido?</summary><p>Para MEIs, pequenos empreendedores, donos de lojas e comércios, prestadores de serviços e autônomos que querem mais controle sobre o dinheiro do negócio.</p></details>
+<details><summary>Preciso ter conhecimento financeiro?</summary><p>Não. O Fôlego foi pensado para ser simples e prático, para quem empreende e não tem formação em finanças.</p></details>
+<details><summary>Como faço para acessar?</summary><p>Clique no botão de compra, finalize no checkout seguro e siga as instruções de acesso. Funciona em computador, tablet e celular.</p></details>
+<details><summary>Como funciona a utilização?</summary><p>Você registra as movimentações do seu negócio e acompanha o saldo, o resumo mensal e a situação do caixa em um só lugar.</p></details>
+<details><summary>Como recebo meu acesso?</summary><p>Depois da confirmação do pagamento, o acesso é liberado conforme as instruções apresentadas no checkout.</p></details>
+</div>
+</section>
+
+<section class="final">
+<div class="w rv">
+<h2>Pare de administrar seu negócio <em>no escuro.</em></h2>
+<p>Comece a entender suas finanças e tenha mais controle sobre o futuro da sua empresa.</p>
+<a class="btn" data-checkout href="#">QUERO CONHECER O FÔLEGO</a>
+</div>
+</section>
+
+<footer>© <span id="y"></span> Fôlego. Os resultados dependem do uso e da gestão de cada negócio; não há promessa de ganhos garantidos. Imagens com dados ilustrativos.</footer>
+
+<script>
+/* ===== CONFIGURAÇÃO (edite aqui) ===== */
+const CHECKOUT_URL = "https://pay.cakto.com.br/3siptg4_1317369";
+const PRECO_ORIGINAL = "R$ 120,00";
+const PRECO_PROMO = "R$ 35,99";
+const GARANTIA_TEXTO = ""; // preencha somente se houver garantia, ex.: "Garantia de 7 dias."
+/* ====================================== */
+document.querySelectorAll("[data-checkout]").forEach(a=>{a.href=CHECKOUT_URL;a.target="_blank";a.rel="noopener"});
+document.querySelector('[data-price="old"]').textContent=PRECO_ORIGINAL;
+document.querySelector('[data-price="promo"]').textContent=PRECO_PROMO;
+if(GARANTIA_TEXTO){const g=document.getElementById("garantia");g.textContent=GARANTIA_TEXTO;g.hidden=false}
+document.getElementById("y").textContent=new Date().getFullYear();
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}}),{threshold:.12});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
